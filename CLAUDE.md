@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Rules
+
+- **상대경로 사용:** 파일 경로는 항상 프로젝트 루트 기준 상대경로로 작성한다. 절대경로 금지.
+- **작업 디렉토리 제한:** 이 프로젝트 디렉토리 바깥의 파일을 읽거나 수정할 때는 반드시 사용자 승인을 받고 진행한다.
+- **변경 이력 기록:** 작업 완료 시 `VERSION.md`에 날짜, 변경 요약, 영향 범위를 기록한다.
+
 ## Project Overview
 
 Bangbae (방배) is a personal expense tracking system that captures Korean card transaction push notifications, parses them, and provides analytics. It has three main components: a Telegram bot for ingestion, a FastAPI REST API, and a React frontend.
