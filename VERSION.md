@@ -15,3 +15,9 @@
 - `CLAUDE.md`에 규칙 섹션 추가 (상대경로 사용, 디렉토리 제한, 변경 이력 기록)
 - `VERSION.md` 신규 생성
 - **영향 범위:** `CLAUDE.md`, `VERSION.md`
+
+### 영수증 스캔 이미지 파일 선택 기능 추가
+- `web/src/pages/ReceiptScan.jsx`: 카메라 촬영 버튼과 이미지 파일 선택 버튼을 분리
+- 기존: `capture="environment"` 단일 input으로 카메라만 가능
+- 변경: 카메라용 input(`capture`)과 파일 선택용 input(capture 없음) 2개로 분리
+- **영향 범위:** `web/src/pages/ReceiptScan.jsx`

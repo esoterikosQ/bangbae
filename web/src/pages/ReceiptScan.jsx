@@ -10,6 +10,7 @@ function formatAmount(amount) {
 export default function ReceiptScan() {
   const { txId } = useParams();
   const navigate = useNavigate();
+  const cameraRef = useRef();
   const fileRef = useRef();
 
   const [step, setStep] = useState('upload');  // upload → processing → review
@@ -95,20 +96,34 @@ export default function ReceiptScan() {
       {/* 업로드 단계 */}
       {step === 'upload' && (
         <div className="space-y-4">
-          <button
-            onClick={() => fileRef.current?.click()}
-            className="w-full rounded-2xl border-2 border-dashed border-slate-700 py-16 text-center hover:border-slate-500"
-          >
-            <span className="text-4xl">📷</span>
-            <p className="mt-3 text-sm text-slate-400">
-              탭하여 영수증 촬영 또는 이미지 선택
-            </p>
-          </button>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              onClick={() => cameraRef.current?.click()}
+              className="rounded-2xl border-2 border-dashed border-slate-700 py-12 text-center hover:border-slate-500"
+            >
+              <span className="text-4xl">📷</span>
+              <p className="mt-3 text-sm text-slate-400">카메라 촬영</p>
+            </button>
+            <button
+              onClick={() => fileRef.current?.click()}
+              className="rounded-2xl border-2 border-dashed border-slate-700 py-12 text-center hover:border-slate-500"
+            >
+              <span className="text-4xl">🖼️</span>
+              <p className="mt-3 text-sm text-slate-400">이미지 선택</p>
+            </button>
+          </div>
+          <input
+            ref={cameraRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleCapture}
+            className="hidden"
+          />
           <input
             ref={fileRef}
             type="file"
             accept="image/*"
-            capture="environment"
             onChange={handleCapture}
             className="hidden"
           />
